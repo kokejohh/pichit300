@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>พิชิตสามร้อย</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <script>
+        let page = "task";
+    </script>
+</head>
+<body class="bg-gray-50">
+    <script src="navbar.js"></script>
+    <div class="mb-16">
+        <p id="title" class="px-16 py-4 text-xl font-extrabold tracking-tight text-gray-900 sm:text-3xl bg-teal-600 text-white"></p>
+        <div class="grid grid-cols-3">
+            <div id="task" class="col-span-3 sm:col-span-2 h-80 space-y-6 overflow-auto bg-gray-100 p-4 sm:p-16 w-full">
+                <p id="title2" class="text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl "></p>
+                <p id="introduce"></p>
+                <div>
+                    <span class="font-bold">โจทย์</span>
+                    <p id="detail"></p>
+                </div>
+                <div>
+                    <span class="font-bold">ข้อมูลนำเข้า</span>
+                    <p id="input"></p>
+                </div>
+                <div>
+                    <span class="font-bold">ช้อมูลส่งออก</span>
+                    <p id="output"></p>
+                </div>
+                <div id="example_inout" class="grid grid-cols-1">
+                    <span class="font-bold">ตัวอย่างข้อมูลนำเข้าและส่งออก</span>
+                </div>
+            </div>
+            <div class="bg-gray-200 hidden sm:block">
+                rst
+            </div>
+        </div>
+        <div class="bg-teal-700 p-2">
+            <div class="text-white text-end w-full sm:w-2/3"> เลือกภาษาโปรแกรม 
+                <select class="px-3 py-1.5 text-gray-900 rounded-md" name="languages" id="languages">
+                    <option value="c"> C </option>
+                    <option value="cpp"> C++ </option>
+                    <option value="java"> Java </option>
+                </select>
+                <button id="submit_code" class="px-3 py-1.5 bg-red-500 rounded-md"> submit </button>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 w-full">
+            <div id="editor" class="col-span-2 text-base sm:text-lg min-h-screen" ></div>
+            <div id="output_result" class="bg-teal-600 min-h-screen">me</div>
+        </div>
+        
+        <div class="px-4 sm:px-8 space-y-6">
+            <h1 class="text-xl font font-extrabold tracking-tight text-gray-900 sm:text-2xl">แสดงความคิดเห็น</h1>
+            <textarea id="comment" name="comment" class="w-full sm:w- p-4"></textarea>
+            <p class="mt-4 text-xl text-gray-700">
+                พบปัญหาการใช้งานใช่ไหม? 
+            </p>
+        </div>
+        <div class="px-4 sm:px-8 space-y-6">
+            <h1 class="text-xl font font-extrabold tracking-tight text-gray-900 sm:text-2xl">แจ้งปัญหาการใช้งาน</h1>
+            <p class="mt-4 text-xl text-gray-700 indent-16">
+                พบปัญหาการใช้งานใช่ไหม? 
+            </p>
+        </div>
+    </div>
+    <footer class="bg-gray-200 text-center">
+        <div class="text-red-500 p-4">
+            © 2022 Copyright:
+            <a class="text-gray-900" href="https://tailwind-elements.com/">Pitchakorn Thiprangsi</a>
+        </div>
+    </footer>
+
+    <script src="../libs/ace.js"></script>
+    <script src="../libs/theme-monokai.js"></script>
+    <script src="user.js"></script>
+    <script src="task_doing.js"></script>
+</body>
+</html>
