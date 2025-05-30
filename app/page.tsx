@@ -1,3 +1,4 @@
+
 export default function Home() {
   return (<div className="animate__animated animate__fadeIn animate__faster pt-16 sm:pt-24 max-w-7xl mx-auto space-y-28 sm:space-y-36 mb-16">
         <div className="px-4 text-center sm:px-8 space-y-8">
