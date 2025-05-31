@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Kanit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -14,6 +14,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const kanit = Kanit({
+  variable: "--font-kanit",
+  subsets: ["latin", "thai"],
+  weight: "500"
+});
+
+
 export const metadata: Metadata = {
   title: "พิชิต 300",
   description: "เว็บไซต์สำหรับฝึกทำโจทย์เกี่ยวกับการเขียนโปรแกรม",
@@ -27,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-between h-screen`}
+        className={`${kanit.variable} antialiased flex flex-col justify-between h-screen`}
       >
         <Navbar/>
         {children}
