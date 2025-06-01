@@ -15,15 +15,18 @@ export default function Navbar() {
                 <Link href="/" className="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-semibold rounded px-4 py-2">
                     หน้าหลัก
                 </Link>
-                <a href="/tasks" className="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-semibold rounded px-4 py-2">
+                <Link href="/tasks" className="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-semibold rounded px-4 py-2">
                     โจทย์
-                </a>
-                <a href="/submission" className="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-semibold rounded px-4 py-2">
+                </Link>
+                <Link href="/submission" className="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-semibold rounded px-4 py-2">
                     ส่งโจทย์
-                </a>
+                </Link>
+                <Link href="/submission" className="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-semibold rounded px-4 py-2">
+                    บทความ
+                </Link>
             </div>
             <div className="text-end">
-                <a href="/login" id="login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-700 hover:bg-white mt-4 sm:mt-0">เข้าสู่ระบบ</a>
+                <Link href="/login" id="login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-700 hover:bg-white mt-4 sm:mt-0">เข้าสู่ระบบ</Link>
                 {/* <a href="login.html" id="logout" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-700 hover:bg-white mt-4 sm:mt-0">ออกจากระบบ</a> */}
             </div>
         </div>
