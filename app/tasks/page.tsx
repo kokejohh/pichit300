@@ -1,6 +1,26 @@
+"use client";
+
+import { useEffect } from "react";
+import { superbase } from "@/app/lib/superbaseClient";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "@/store/userSlice";
+import type { RootState } from "@/store/index";
+
 export default function Tasks() {
+    const user = useSelector((state: RootState ) => state.user.user); 
+    const dispatch = useDispatch();
+    useEffect(() => {
+        console.log('mounted');
+        dispatch(login({name: 'koke'}));
+    }, []);
+
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
+
     return (
          <div className="pt-16 sm:pt-24 max-w-7xl mx-auto space-y-10 sm:space-y-16 mb-16">
+            {user ? <p>Hi {user.name}</p> : <p>Please log in</p>}
         <div className="px-4 sm:px-8 space-y-8">
             <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">ทำโจทย์ข้อไหนดีนะ</h1>
             <div className="flex justify-center">
