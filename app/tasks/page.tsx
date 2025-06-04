@@ -7,7 +7,7 @@ import { login, logout } from "@/store/userSlice";
 import type { RootState } from "@/store/index";
 
 export default function Tasks() {
-    const user = useSelector((state: RootState ) => state.user.user); 
+    const user = useSelector<RootState, { name: string } | null>(state  => state.user.user);
     const dispatch = useDispatch();
     useEffect(() => {
         console.log('mounted');
