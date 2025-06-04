@@ -3,15 +3,58 @@
 import { superbase } from "@/app/lib/superbaseClient";
 import Image from "next/image";
 
-export default function Login() {
-    async function loginGoogle() {
-        const { data, error } = await superbase.auth.signInWithOAuth({
-            provider: 'google',
-            options: {
-                redirectTo: 'http://localhost:3000/tasks'
-            }
-        });
+async function loginTU(event: React.FormEvent<HTMLElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const UserName = formData.get('username')?.toString() ?? '';
+    const PassWord = formData.get('password')?.toString() ?? '';
+
+    const url = 'https://restapi.tu.ac.th/api/v1/auth/Ad/verify';
+    const result = await fetch(url, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+            'Application-Key': process.env.NEXT_PUBLIC_API_TU ?? ''
+        },
+        body: JSON.stringify({ UserName, PassWord })
+    });
+
+    const dataTU = await result.json();
+    if (dataTU.status === true) {
+        // const { data, error} = await superbase.auth.signInWithPassword({
+        //     email: dataTU.email,
+        //     password: PassWord
+        // });
+
+            const { data, error } = await superbase.auth.signUp({
+                email: dataTU.email,
+                password: PassWord,
+                options: {
+                    data: {
+                        displayName: dataTU.displayname_en
+                    }
+                }
+            });
+        console.log(data);
+        console.log(error);
+    } else {
+        console.log('login failed');
     }
+}
+
+async function loginGoogle() {
+    const { data, error } = await superbase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+            redirectTo: 'http://localhost:3000/tasks'
+        }
+    });
+}
+
+export default function Login() {
     return (
         <div className="max-w-sm w-full my-8 mx-auto">
             <div>
@@ -23,7 +66,7 @@ export default function Login() {
                 </div>
                 <h2 className="mt-4 text-center text-3xl font-extrabold text-teal-700">พิชิต<span className="text-red-500">สามร้อย</span></h2>
             </div>
-            <form className="mt-8 space-y-4" action="#" method="post">
+            <form onSubmit={loginTU} className="mt-8 space-y-4">
                 <input type="hidden" name="remember" value="true" />
                 <div className="rounded-md space-y-4">
                     <div id="alert_noti" className="flex items-center border border-red-700 bg-red-500 text-white text-sm rounded px-4 py-3 hidden" role="alert">
@@ -48,7 +91,7 @@ export default function Login() {
                         <a href="#" className="font-medium text-gray-600 hover:text-gray-500"> จำรหัสผ่านไม่ได้? </a>
                     </div>
                 </div>
-                <button type="button" id="btn_login" className="w-full btn-teal-700 btn-ring-teal-700">
+                <button type="submit" id="btn_login" className="w-full btn-teal-700 btn-ring-teal-700 hover:cursor-pointer">
                     เข้าสู่ระบบ
                 </button>
                 <p className="text-center">หรือ</p>

@@ -4,6 +4,7 @@ import { superbase } from "@/app/lib/superbase";
 
 export async function POST(req: NextRequest) {
     const url = 'https://restapi.tu.ac.th/api/v1/auth/Ad/verify';
+    /*
     const {UserName, PassWord} = await req.json();
 
     const result = await fetch(url, {
@@ -27,6 +28,8 @@ export async function POST(req: NextRequest) {
     });
 
     const response = NextResponse.json({data, error});
+    */
+   const response = NextResponse.json({});
 
     return response;
 }
