@@ -1,27 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>พิชิตสามร้อย</title>
-    <link rel="stylesheet" href="../dist/output.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-    <script>
-        let page = "task";
-    </script>
-</head>
-<body class="bg-gray-50">
-    <script src="navbar.js"></script>
-    
-    <div class="pt-16 sm:pt-24 max-w-7xl mx-auto space-y-10 sm:space-y-16 mb-16">
-        <div class="px-4 sm:px-8 space-y-8">
-            <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">ทำโจทย์ข้อไหนดีนะ</h1>
-            <div class="flex justify-center">
-                <div class="mb-3 w-full">
+"use client";
+
+import { useEffect } from "react";
+import { superbase } from "@/app/lib/superbaseClient";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "@/store/userSlice";
+import type { RootState } from "@/store/index";
+
+export default function Tasks() {
+    const user = useSelector((state: RootState ) => state.user.user); 
+    const dispatch = useDispatch();
+    useEffect(() => {
+        console.log('mounted');
+        dispatch(login({name: 'koke'}));
+    }, []);
+
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
+
+    return (
+         <div className="pt-16 sm:pt-24 max-w-7xl mx-auto space-y-10 sm:space-y-16 mb-16">
+            {user ? <p>Hi {user.name}</p> : <p>Please log in</p>}
+        <div className="px-4 sm:px-8 space-y-8">
+            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">ทำโจทย์ข้อไหนดีนะ</h1>
+            <div className="flex justify-center">
+                <div className="mb-3 w-full">
                   <input
                     type="search"
-                    class="
+                    className="
                       w-full
                       sm:w-1/2
                       px-4
@@ -37,10 +43,10 @@
                     id="search"
                     placeholder="ค้นหาโจทย์"
                   />  
-                    <div class="block sm:flex sm:justify-between w-1/2 mx-3 space-y-4 sm:space-y-0">
-                        <div class="block sm:inline-block">
+                    <div className="block sm:flex sm:justify-between w-1/2 mx-3 space-y-4 sm:space-y-0">
+                        <div className="block sm:inline-block">
                             <label>ระดับ: </label>
-                            <select id="level" name="level" class="px-3 py-1.5">
+                            <select id="level" name="level" className="px-3 py-1.5">
                                 <option value="ทั้งหมด">ทั้งหมด</option>
                                 <option value="ง่าย">ง่าย</option>
                                 <option value="ปานกลาง">ปานกลาง</option>
@@ -48,17 +54,17 @@
                                 <option value="ยากที่สุด">ยากที่สุด</option>
                             </select>
                         </div>
-                        <div class="block sm:inline-block">
+                        <div className="block sm:inline-block">
                             <label>ประเภท: </label>
-                            <select id="from" name="from" class="px-3 py-1.5">
+                            <select id="from" name="from" className="px-3 py-1.5">
                                 <option>โจทย์ทั้งหมด</option>
                                 <option>โจทย์จากระบบ</option>
                                 <option>โจทย์จากผู้ใช้</option>
                             </select>
                         </div>
-                        <div class="block sm:inline-block">
+                        <div className="block sm:inline-block">
                             <label>สถานะ:</label>
-                            <select id="status" name="status" class="px-3 py-1.5">
+                            <select id="status" name="status" className="px-3 py-1.5">
                                 <option>ทั้งหมด</option>
                                 <option>ยังไม่ได้ทำ</option>
                                 <option>ยังไม่ผ่าน</option>
@@ -70,24 +76,15 @@
             </div>
         </div>
         
-        <div id="containerTask" class="px-4 w-full sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div id="containerTask" className="px-4 w-full sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-4">
         </div>
         
-        <div class="px-4 sm:px-8 space-y-6">
-            <h1 class="text-xl font font-extrabold tracking-tight text-gray-900 sm:text-2xl">แจ้งปัญหาการใช้งาน</h1>
-            <p class="mt-4 text-xl text-gray-700 indent-16">
+        <div className="px-4 sm:px-8 space-y-6">
+            <h1 className="text-xl font font-extrabold tracking-tight text-gray-900 sm:text-2xl">แจ้งปัญหาการใช้งาน</h1>
+            <p className="mt-4 text-xl text-gray-700 indent-16">
                 พบปัญหาการใช้งานใช่ไหม? 
             </p>
         </div>
     </div>
-    <footer class="bg-gray-200 text-center">
-        <div class="text-red-500 p-4">
-            © 2022 Copyright:
-            <a class="text-gray-900" href="https://tailwind-elements.com/">Pitchakorn Thiprangsi</a>
-        </div>
-    </footer>
-
-    <script src="user.js"></script>
-    <script src="read_task.js"></script>
-</body>
-</html>
+    );
+}
