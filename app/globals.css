@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @import 'animate.css';
-@plugin "daisyui";
-
+@plugin "daisyui" {
+  themes: light --default;
+}
 
 @layer components {
     .btn-teal-700 {
@@ -23,12 +24,10 @@
   --foreground: #171717;
 }
 
+/*
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
+*/
 
 body {
   color: var(--foreground);
