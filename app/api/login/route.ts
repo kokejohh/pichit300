@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { env } from "process";
-import { superbase } from "@/app/lib/superbase";
+import { supabase } from "@/app/lib/supabase";
 
 export async function POST(req: NextRequest) {
     const url = 'https://restapi.tu.ac.th/api/v1/auth/Ad/verify';
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     });
 
     const dataTU = await result.json();
-    const { data, error } = await superbase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
         email: dataTU.email,
         password: PassWord,
         options: {

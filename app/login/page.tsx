@@ -1,6 +1,6 @@
 "use client";
 
-import { superbase } from "@/app/lib/superbaseClient";
+import { supabase } from "@/app/lib/supabaseClient";
 import Image from "next/image";
 
 async function loginTU(event: React.FormEvent<HTMLElement>) {
@@ -24,12 +24,12 @@ async function loginTU(event: React.FormEvent<HTMLElement>) {
 
     const dataTU = await result.json();
     if (dataTU.status === true) {
-        // const { data, error} = await superbase.auth.signInWithPassword({
+        // const { data, error} = await supabase.auth.signInWithPassword({
         //     email: dataTU.email,
         //     password: PassWord
         // });
 
-            const { data, error } = await superbase.auth.signUp({
+            const { data, error } = await supabase.auth.signUp({
                 email: dataTU.email,
                 password: PassWord,
                 options: {
@@ -46,7 +46,7 @@ async function loginTU(event: React.FormEvent<HTMLElement>) {
 }
 
 async function loginGoogle() {
-    const { data, error } = await superbase.auth.signInWithOAuth({
+    const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
             redirectTo: 'http://localhost:3000/tasks'

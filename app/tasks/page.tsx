@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { superbase } from "@/app/lib/superbaseClient";
+import { supabase } from "@/app/lib/supabaseClient";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "@/store/userSlice";
 import type { RootState } from "@/store/index";
