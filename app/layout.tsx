@@ -3,6 +3,7 @@ import { Kanit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Auth from "@/components/Auth";
 import ReduxProvider from "@/components/ReduxProvider";
 
 const kanit = Kanit({
@@ -28,7 +29,8 @@ export default function RootLayout({
         className={`${kanit.variable} antialiased flex flex-col justify-between h-screen`}
       >
         <ReduxProvider>
-          <Navbar/>
+          <Auth />
+          <Navbar />
           {children}
           <Footer />
         </ReduxProvider>

@@ -1,6 +1,22 @@
+'use client';
+
+import { useDispatch, useSelector } from "react-redux";
+
+import type { RootState } from "@/store";
+
 import Link from "next/link";
+import { supabase } from "@/app/lib/supabaseClient";
+import { logout } from "@/store/userSlice";
 
 export default function Navbar() {
+    const dispatch  = useDispatch();
+    async function Logout() {
+        supabase.auth.signOut();
+        dispatch(logout());
+    }
+
+    const user = useSelector<RootState, any>(state => state.user.user);
+
     return (
     <nav className="flex items-center justify-between flex-wrap bg-teal-700 py-4 px-8 sm:px-16">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
@@ -34,8 +50,14 @@ export default function Navbar() {
             </li>
         </ul>
         <div className="hidden sm:block">
+            {user ?
+            <div>
+             {user.user_metadata.full_name}
+            <button id="logout" onClick={Logout} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-700 hover:bg-white mt-4 sm:mt-0">ออกจากระบบ</button>
+            </div>
+            :
             <Link href="/login" id="login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-700 hover:bg-white mt-4 sm:mt-0">เข้าสู่ระบบ</Link>
-            {/* <a href="login.html" id="logout" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-700 hover:bg-white mt-4 sm:mt-0">ออกจากระบบ</a> */}
+            }
         </div>
     </nav>)
 }
