@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { supabase } from '@/app/lib/supabaseClient';
 import { useDispatch } from 'react-redux';
-import { login, logout } from '@/store/userSlice';
+import { login } from '@/store/userSlice';
 
 export default function Auth() {
     const dispatch = useDispatch();
@@ -18,5 +18,5 @@ export default function Auth() {
         getUser();
     }, []);
 
-    return null;
+    return <></>;
 }
