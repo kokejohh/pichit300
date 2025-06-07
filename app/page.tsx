@@ -1,3 +1,4 @@
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
                 เว็บไซต์ที่รวบรวมโจทย์ที่เป็นประโยชน์ในการสอบวิชา CS300
             </p>
             <div className="animate__animated animate__pulse animate__infinite">
-                <a href="/tasks" className="a-teal-700">เริ่มทำโจทย์</a>
+                <Link href="/tasks" className="a-teal-700">เริ่มทำโจทย์</Link>
             </div>
         </div>
         <div className="grid-data-3-1">

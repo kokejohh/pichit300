@@ -29,15 +29,15 @@ async function loginTU(event: React.FormEvent<HTMLElement>) {
         //     password: PassWord
         // });
 
-            const { data, error } = await supabase.auth.signUp({
-                email: dataTU.email,
-                password: PassWord,
-                options: {
-                    data: {
-                        displayName: dataTU.displayname_en
-                    }
+        const { data, error } = await supabase.auth.signUp({
+            email: dataTU.email,
+            password: PassWord,
+            options: {
+                data: {
+                    displayName: dataTU.displayname_en
                 }
-            });
+            }
+        });
         console.log(data);
         console.log(error);
     } else {
