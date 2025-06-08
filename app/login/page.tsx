@@ -54,7 +54,7 @@ export default function Login() {
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                // redirectTo: 'https://pichit300.vercel.app/tasks'
+                redirectTo: 'https://pichit300.vercel.app/tasks'
             }
         });
     }
