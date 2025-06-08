@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import { supabase } from '@/app/lib/supabaseClient';
+import { createClient } from '@/app/utils/supabase/supabaseClient';
 import { useDispatch } from 'react-redux';
 import { login } from '@/store/userSlice';
 
 export default function Auth() {
+    const supabase = createClient();
     const dispatch = useDispatch();
 
     const getUser = async () => {
@@ -23,6 +24,8 @@ export default function Auth() {
                 if (insertError) console.error('Error creating profile', insertError);
             }
         }
+        const { data: d, error: e } = await supabase.auth.getSession();
+        console.log('koke', data);
     }
 
     useEffect(() => {

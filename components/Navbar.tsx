@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/store";
 
 import Link from "next/link";
-import { supabase } from "@/app/lib/supabaseClient";
+import { createClient } from "@/app/utils/supabase/supabaseClient";
 import { logout } from "@/store/userSlice";
 
 import Image from 'next/image';
 
 export default function Navbar() {
+    const supabase = createClient();
     const dispatch = useDispatch();
     const router = useRouter();
     async function Logout() {
