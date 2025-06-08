@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { env } from "process";
-import { supabase } from "@/app/lib/supabase";
+// import { supabase } from "@/app/lib/supabase";
 
 export async function POST(req: NextRequest) {
     const url = 'https://restapi.tu.ac.th/api/v1/auth/Ad/verify';

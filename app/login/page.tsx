@@ -1,6 +1,7 @@
-"use client";
+'use client';
 
-import { supabase } from "@/app/lib/supabaseClient";
+import { createClient } from "@/app/utils/supabase/supabaseClient";
+import PublicRoute from "@/components/PublicRoute";
 import Image from "next/image";
 
 async function loginTU(event: React.FormEvent<HTMLElement>) {
@@ -29,33 +30,36 @@ async function loginTU(event: React.FormEvent<HTMLElement>) {
         //     password: PassWord
         // });
 
-        const { data, error } = await supabase.auth.signUp({
-            email: dataTU.email,
-            password: PassWord,
-            options: {
-                data: {
-                    displayName: dataTU.displayname_en
-                }
-            }
-        });
-        console.log(data);
-        console.log(error);
+        // const { data, error } = await supabase.auth.signUp({
+        //     email: dataTU.email,
+        //     password: PassWord,
+        //     options: {
+        //         data: {
+        //             displayName: dataTU.displayname_en
+        //         }
+        //     }
+        // });
+        // console.log(data);
+        // console.log(error);
     } else {
         console.log('login failed');
     }
 }
 
-async function loginGoogle() {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-            redirectTo: 'https://pichit300.vercel.app/tasks'
-        }
-    });
-}
 
 export default function Login() {
+    const supabase = createClient();
+
+    async function loginGoogle() {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                // redirectTo: 'https://pichit300.vercel.app/tasks'
+            }
+        });
+    }
     return (
+        <PublicRoute>
         <div className="max-w-sm w-full my-8 mx-auto">
             <div>
                 <div className="mx-auto h-20 w-20 relative">
@@ -101,5 +105,6 @@ export default function Login() {
                 </button>
             </form>
         </div>
+        </PublicRoute>
     )
 }
