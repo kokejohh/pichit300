@@ -16,7 +16,7 @@
     "@supabase/supabase-js": "^2.49.8",
     "animate.css": "^4.1.1",
     "daisyui": "^5.0.43",
-    "next": "15.3.2",
+    "next": "15.3.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0"
